@@ -18,6 +18,7 @@ fetch("http://localhost:3000/menu")
         menuItemsDiv.append(span)
 
         span.addEventListener('click', event => {
+            renderMenuItem(menuItem)
         })
     })
 
