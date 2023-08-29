@@ -4,6 +4,8 @@ const dishImg = document.querySelector('#dish-image')
 const dishName = document.querySelector('#dish-name')
 const dishDesc = document.querySelector('#dish-description')
 const dishPrice = document.querySelector('#dish-price')
+const cartForm = document.querySelector('#cart-form')
+const cartNumSpan = document.querySelector('#number-in-cart')
 
 fetch("http://localhost:3000/menu")
 .then(resp => resp.json())
@@ -32,3 +34,13 @@ function renderMenuItem(menuItem) {
     dishDesc.textContent = menuItem.description
     dishPrice.textContent = menuItem.price
 }
+
+cartForm.addEventListener('submit', event => {
+    event.preventDefault()
+    
+    const currNum = cartNumSpan.textContent
+    const numToAdd = event.target[0].value
+    
+    const newTotal = parseInt(currNum) + parseInt(numToAdd)
+    cartNumSpan.textContent = newTotal
+})
